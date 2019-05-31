@@ -1,9 +1,9 @@
 from config import config_options
 from flask import Flask
 from .main import Blueprint
-from flask_bootstrap import Bootsrap 
+from flask_bootstrap import Bootstrap 
 
-bootstrap= Bootsrap()
+bootstrap= Bootstrap()
 
 def create_app(config_name):
     app = Flask(__name__)
