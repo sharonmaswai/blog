@@ -6,7 +6,7 @@ def index():
     name='The Rustic Life'
 
 
-    render_template('index.html', name=name)
+    return render_template('index.html', name=name)
 
 
 
