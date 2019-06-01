@@ -13,6 +13,8 @@ def index():
     return render_template('index.html', name=name)
 
 @main.route('/new_blog', methods=['GET', 'POST'])
+@login_required
+
 def new_blog():
     blogform=BlogForm()
 
