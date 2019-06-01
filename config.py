@@ -1,6 +1,7 @@
 class Config:
 
-    
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sharon-maswai:qwerty@localhost/blog'
+
 class ProdConfig(Config):
     pass
 class DevConfig(Config):
