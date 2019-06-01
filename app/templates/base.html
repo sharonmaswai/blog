@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +12,9 @@
     <title>Welcome| The home of everything country</title>
 </head>
 <body>
-   {%block navbar%}
-   {%endblock%}
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock %}
    
    {%block content%}
    {%endblock%}
