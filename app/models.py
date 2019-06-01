@@ -1,6 +1,8 @@
 from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
+
 
 class Blog(db.Model):
 
@@ -54,3 +56,27 @@ class User(UserMixin,db.Model):
 
     def verify_password(self,password):
         return check_password_hash(self.password_hash,password)  
+
+class Comment(db.Model):
+
+    __tablename__='comments'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String())
+    email = db.Column(db.String())
+    comment_content = db.Column(db.String())
+    date_comment = db.Column(db.DateTime, nullable=False, default = datetime.utcnow)
+    blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
+    
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+    
+    @classmethod
+    def get_blog_comments(cls,id):
+        comments = Comment.query.filter_by(blog_id=id).order_by('-id').all()
+        return comments
+    
+    @classmethod
+    def get_single_comment(cls,id_blog,id):
+        comment = Comment.query.filter_by(blog_id=id_blog,id=id).first()
+        return comment
