@@ -1,5 +1,9 @@
-from flask import render_template
+from flask import render_template,  request, redirect, url_for, flash, abort
 from . import main
+from ..models import User, Blog, Comment
+from datetime import datetime
+from .forms import BlogForm, CommentForm, EmailForm
+
  
 @main.route('/')
 def index():
