@@ -1,4 +1,4 @@
-
+from . import db
 
 class Blog(db.Model):
 
@@ -11,8 +11,8 @@ class Blog(db.Model):
     blog_pic = db.Column(db.String(255))
     photo_url = db.Column(db.String(500))
     
-    comment = db.relationship('Comment',backref='blog',lazy='dynamic')
-    photo = db.relationship('Photo', backref='blog',lazy='dynamic')
+    # comment = db.relationship('Comment',backref='blog',lazy='dynamic')
+    # photo = db.relationship('Photo', backref='blog',lazy='dynamic')
 
     def save_blog(self):
         db.session.add(self)
