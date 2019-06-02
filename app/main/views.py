@@ -57,3 +57,14 @@ def blog(id):
 
     return render_template('blog.html', get_blog=get_blog,comment_form=comment_form)
 
+@main.route('/index/<int:id>/delete_blog')
+@login_required
+def delete_blog(id):
+    blog = Blog.get_single_blog(id)
+
+    db.session.delete(blog)
+    db.session.commit()
+
+    flash('Blog has been deleted') 
+
+    return redirect(url_for('main.index'))
