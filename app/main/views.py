@@ -25,7 +25,7 @@ def new_blog():
         blog=blogform.blog_data.data
         url=blogform.photo_url.data
 
-        new_blog=Blog(title=blog_title, blog=blog, date_posted=datetime.now(),photo_url=url)
+        new_blog=Blog(title=blog_title, blog_content = blog, date_posted=datetime.now(),photo_url=url)
         new_blog.save_blog()
 
         new_blog.save_blog()
