@@ -10,24 +10,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
+                    
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="/#projects">RECIPES  |</a>
+                        <a class="nav-link js-scroll-trigger" href="{{url_for('main.new_blog')}}">CREATE BLOG  |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="/#skills">CRAFTS  |</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="/#contact">PHOTOS  |</a>
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="/#contact">DECOR  |</a>
+                            <a class="nav-link js-scroll-trigger" href="{{url_for('main.blog')}}">BLOG |</a>
                     
                     </li>
                     {% if current_user.is_authenticated %}
-                    <li style="color:white;padding:15px;">{{current_user.username}}</li>
-                    <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                    <li style="color:black;padding:15px;">{{current_user.username | capitalize}}</li>
+                    <li><a lass="nav-link js-scroll-trigger" href="{{url_for('auth.logout')}}">SIGN OUT  |</a></li>
                     {% else %}
-                    <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                    <li><a lass="nav-link js-scroll-trigger" href="{{url_for('auth.login')}}">LOGIN  |</a></li>
                     {%endif%}
                 </ul>
             </div>
