@@ -10,6 +10,13 @@ from flask_login import login_required
 def index():
     name='The Rustic Life'
 
+    blogposts = Blog.get_all_blogs()
+
+    
+    blogs = blogposts
+    return render_template('index.html', blogposts=blogs)
+    
+       
 
     return render_template('index.html', name=name)
 
@@ -35,7 +42,7 @@ def new_blog():
 
 
 @main.route('/blog/<int:id>', methods=['GET','POST'])
-def blog(id):
+def view_blog(id):
     get_blog=Blog.query.get(id)
 
     if get_blog is None:
