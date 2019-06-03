@@ -4,21 +4,21 @@ from ..models import User, Blog, Comment
 from datetime import datetime
 from .forms import BlogForm, CommentForm
 from flask_login import login_required
-
+from .. import db
  
 @main.route('/')
 def index():
     name='The Rustic Life'
 
-    blogposts = Blog.get_all_blogs()
+    all_blogs = Blog.get_all_blogs()
 
     
-    blogs = blogposts
-    return render_template('index.html', blogposts=blogs)
+    blogs = all_blogs
+    return render_template('index.html', all_blogs=blogs, name=name)
     
        
 
-    return render_template('index.html', name=name)
+   
 
 @main.route('/new_blog', methods=['GET', 'POST'])
 @login_required
@@ -50,19 +50,19 @@ def view_blog(id):
 
     comment_form = CommentForm()
 
-    # if comment_form.validate_on_submit():
-    #     user_name = comment_form.name.data
-    #     user_email = comment_form.email.data
-    #     user_comment = comment_form.comment_data.data
+    if comment_form.validate_on_submit():
+        user_name = comment_form.name.data
+        user_email = comment_form.email.data
+        user_comment = comment_form.comment_data.data
 
-    #     new_comment = Comment(name=user_name,email=user_email,comment_content=user_comment,date_comment = datetime.now(),blog_id=id)
-    #     new_comment.save_comment()
+        new_comment = Comment(name=user_name,email=user_email,comment_content=user_comment,date_comment = datetime.now(),blog_id=id)
+        new_comment.save_comment()
 
-    #     return redirect(url_for('main.blog',id=id))
+        return redirect(url_for('main.view_blog',id=id))
     
-    # get_comments = Comment.get_blog_comments(id)
+    get_comments = Comment.get_blog_comments(id)
 
-    return render_template('blog.html', get_blog=get_blog,comment_form=comment_form)
+    return render_template('blog.html', get_blog=get_blog,get_comments=get_comments, comments_count = len(get_blog_comments),comment_form=comment_form)
 
 @main.route('/index/<int:id>/delete_blog')
 @login_required
@@ -75,3 +75,15 @@ def delete_blog(id):
     flash('Blog has been deleted') 
 
     return redirect(url_for('main.index'))
+@main.route('/blog/<int:id>/<int:id_comment>/delete_comment')
+@login_required
+def delete_comment(id,id_comment):
+    comment = Comment.get_single_comment(id,id_comment)
+
+    db.session.delete(comment)
+    db.session.commit()
+
+   
+
+    return redirect(url_for('main.view_blog',id=id))
+

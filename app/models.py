@@ -24,9 +24,8 @@ class Blog(db.Model):
     
     @classmethod
     def get_all_blogs(cls):
-        blogs = Blog.query.order_by('-id').all()
+        blogs = Blog.query.order_by('id').all()
         return blogs
-
     @classmethod
     def get_single_blog(cls,id):
         blog = Blog.query.filter_by(id=id).first()
@@ -72,7 +71,7 @@ class Comment(db.Model):
     
     @classmethod
     def get_blog_comments(cls,id):
-        comments = Comment.query.filter_by(blog_id=id).order_by('-id').all()
+        comments = Comment.query.filter_by(blog_id=id).order_by('id').all()
         return comments
     
     @classmethod
