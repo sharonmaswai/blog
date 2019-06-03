@@ -94,7 +94,7 @@ class Email(db.Model):
         email = Email.query.filter_by(id=id).first()
         return email
 class Quote: 
-    def __init__self, quote, author():
+    def __init__(self, quote, author):
         self.quote=quote
         self.author=author
        

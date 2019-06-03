@@ -4,11 +4,15 @@ from ..models import User, Blog, Comment
 from datetime import datetime
 from .forms import BlogForm, CommentForm, EmailForm
 from flask_login import login_required
+
+
 from .. import db
  
 @main.route('/')
 def index():
     name='The Country Bowl'
+
+    # random_quote = display_random_quote()
 
     all_blogs = Blog.get_all_blogs()
 
