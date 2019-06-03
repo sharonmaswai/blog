@@ -2,7 +2,7 @@ from flask import render_template,  request, redirect, url_for, flash, abort
 from . import main
 from ..models import User, Blog, Comment
 from datetime import datetime
-from .forms import BlogForm, CommentForm
+from .forms import BlogForm, CommentForm, EmailForm
 from flask_login import login_required
 from .. import db
  
@@ -27,7 +27,7 @@ def index():
         send_subscriptions(new_subscription)
         return redirect(url_for('main.subscribe'))  
         
-        return render_template('index.html', all_blogs=blogs, name=name, subscribe_form = form )
+    return render_template('index.html', all_blogs=blogs, name=name, subscribe_form = form )
       
        
 
