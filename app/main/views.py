@@ -8,7 +8,7 @@ from .. import db
  
 @main.route('/')
 def index():
-    name='The Rustic Life'
+    name='The Country Bowl'
 
     all_blogs = Blog.get_all_blogs()
 
