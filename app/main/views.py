@@ -92,16 +92,16 @@ def delete_blog(id):
     db.session.delete(blog)
     db.session.commit()
 
-    flash('Blog has been deleted') 
+    
 
     return redirect(url_for('main.index'))
 
-@main.route('/subscribe')
-def subscribe():
+# @main.route('/subscribe')
+# def subscribe():
     
-    name='Successfully subscribed!!'
+#     name='Successfully subscribed!!'
 
-    return render_template('subscribed.html', name=name)
+#     return render_template('subscribed.html', name=name)
 @main.route('/blog/<int:id>/<int:id_comment>/delete_comment')
 @login_required
 def delete_comment(id,id_comment):
