@@ -5,6 +5,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sharon-maswai:qwerty@localhost/blog'
     SQLALCHEMY_TRACK_MODIFICATIONS= False
+     QUOTES_API_KEY = os.environ.get('QUOTES_API_KEY')
 
     MAIL_SERVER=os.environ.get('MAIL_SERVER')
     MAIL_PORT=os.environ.get('MAIL_PORT')

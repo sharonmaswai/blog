@@ -93,4 +93,8 @@ class Email(db.Model):
     def send_one_email(cls,id):
         email = Email.query.filter_by(id=id).first()
         return email
+class Quote: 
+    def __init__self, quote, author():
+        self.quote=quote
+        self.author=author
        

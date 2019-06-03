@@ -15,13 +15,13 @@
                         <a class="nav-link js-scroll-trigger" href="{{url_for('main.new_blog')}}">CREATE BLOG  |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="" href="/#blog-content">BLOGS  |</a>
+                        <a class="nav-item dark" href="/#blog-content">BLOGS  |</a>
                     </li>
                     {% if current_user.is_authenticated %}
-                    <li style="color:black;padding:15px;">{{current_user.username | capitalize}}</li>
-                    <li><a lass="nav-link js-scroll-trigger" href="{{url_for('auth.logout')}}">SIGN OUT  |</a></li>
+                    <li style="color:black;padding:15px;" class="nav-item">{{current_user.username | upper}}  |</li>
+                    <li class="nav-item"><a class="js-scroll-trigger" href="{{url_for('auth.logout')}}">SIGN OUT  |</a></li>
                     {% else %}
-                    <li><a lass="nav-link js-scroll-trigger" href="{{url_for('auth.login')}}">LOGIN  |</a></li>
+                    <li class="nav-item"><a class="js-scroll-trigger" href="{{url_for('auth.login')}}">LOGIN  |</a></li>
                     {%endif%}
                 </ul>
             </div>
