@@ -14,8 +14,21 @@ def index():
 
     
     blogs = all_blogs
-    return render_template('index.html', all_blogs=blogs, name=name)
     
+    form = EmailForm()
+
+    if form.validate_on_submit():
+        user_name = form.name.data
+        user_email = form.email.data
+
+        new_subscription = Email(name=user_name,email_data=user_email)
+        new_subscription.save_email()
+
+        send_subscriptions(new_subscription)
+        return redirect(url_for('main.subscribe'))  
+        
+        return render_template('index.html', all_blogs=blogs, name=name, subscribe_form = form )
+      
        
 
    
@@ -62,6 +75,9 @@ def view_blog(id):
     
     get_comments = Comment.get_blog_comments(id)
 
+    
+
+
     return render_template('blog.html', get_blog=get_blog,get_comments=get_comments,comment_form=comment_form)
 
 @main.route('/index/<int:id>/delete_blog')
@@ -75,6 +91,13 @@ def delete_blog(id):
     flash('Blog has been deleted') 
 
     return redirect(url_for('main.index'))
+
+@main.route('/subscribe')
+def subscribe():
+    
+    name='Successfully subscribed!!'
+
+    return render_template('subscribed.html', name=name)
 @main.route('/blog/<int:id>/<int:id_comment>/delete_comment')
 @login_required
 def delete_comment(id,id_comment):

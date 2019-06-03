@@ -3,6 +3,7 @@
 {%block content%}
 <style>
 
+
     head{
         margin-top: 250px;
         margin-bottom: 120px;
@@ -25,9 +26,18 @@
         padding-right: 100px;
 
     }
+    footer{
+        background-color:chocolate;
+    }
     h2{
         font-family: 'Dancing Script', cursive;
         font-size: 45px;
+
+    }
+    .subscribe{
+        margin-top: 70px;
+        margin-bottom: 50px;
+        margin-left: 450px;
 
     }
 
@@ -98,6 +108,26 @@
             <div class="col-md-1">
 
             </div>
+        </div>
+        <div class="row">
+                <div class="col-md-12">
+                        <footer>
+                            <div class="subscribe">
+                                    
+                                    {{subscribe_form.email}}
+                                    <br>
+                                    {{subscribe_form.name}}
+                                    <br>
+                                    {{subscribe_form.subscribe}}
+
+                            </div>
+                                    
+                
+                        </footer>
+        
+        
+                </div>
+                   
         </div>
        
 </body>
