@@ -21,15 +21,15 @@ def index():
     
     form = EmailForm()
 
-    if form.validate_on_submit():
-        user_name = form.name.data
-        user_email = form.email.data
+    # if form.validate_on_submit():
+    #     user_name = form.name.data
+    #     user_email = form.email.data
 
-        new_subscription = Email(name=user_name,email_data=user_email)
-        new_subscription.save_email()
+    #     new_subscription = Email(name=user_name,email_data=user_email)
+    #     new_subscription.save_email()
 
-        send_subscriptions(new_subscription)
-        return redirect(url_for('main.subscribe'))  
+    #     send_subscriptions(new_subscription)
+    #     return redirect(url_for('main.subscribe'))  
         
     return render_template('index.html', all_blogs=blogs, name=name, subscribe_form = form )
       
@@ -62,8 +62,8 @@ def new_blog():
 def view_blog(id):
     get_blog=Blog.query.get(id)
 
-    if get_blog is None:
-        abort(404)
+    # if get_blog is None:
+        # abort(404)
 
     comment_form = CommentForm()
 
