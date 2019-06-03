@@ -12,3 +12,7 @@ class CommentForm(FlaskForm):
     email = StringField('Email', validators=[Required()],render_kw={"placeholder": "Email"})
     comment_data = TextAreaField('Enter Comment', validators=[Required()],render_kw={"placeholder": "Comment"})
     post = SubmitField('Post Comment')
+class EmailForm(FlaskForm):
+    name = StringField('First Name', validators=[Required()],render_kw={"placeholder": "Enetr your first Name"})
+    email = StringField('Email', validators=[Required()],render_kw={"placeholder": "Enetr your email address"})
+    subscribe = SubmitField('Subscribe')

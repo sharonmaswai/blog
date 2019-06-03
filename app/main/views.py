@@ -36,7 +36,7 @@ def new_blog():
         new_blog.save_blog()
 
         new_blog.save_blog()
-        return redirect(url_for('main.blog',id=new_blog.id))
+        return redirect(url_for('main.view_blog',id=new_blog.id))
 
     return render_template('new_blog.html', blogform = blogform)
 
