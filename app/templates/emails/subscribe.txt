@@ -1,6 +1,0 @@
-<p>Congratulations {{subscriber.name |capitalize}}</p>
-<br>
-<p>Your subscription to The Country Bowl was successful</p>
-<p><a href="main.view_blog', id=blog.id, _external=True)">click here</a>to view the new blog.</p>
-<br>
-<p>The Country Bowl Blog</p>

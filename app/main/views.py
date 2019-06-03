@@ -1,4 +1,4 @@
-from flask import render_template,  request, redirect, url_for, flash, abort
+from flask import render_template,  request, redirect, url_for, abort
 from . import main
 from ..models import User, Blog, Comment
 from datetime import datetime
@@ -62,8 +62,8 @@ def new_blog():
 def view_blog(id):
     get_blog=Blog.query.get(id)
 
-    # if get_blog is None:
-        # abort(404)
+    if get_blog is None:
+        abort(404)
 
     comment_form = CommentForm()
 
