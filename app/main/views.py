@@ -62,7 +62,7 @@ def view_blog(id):
     
     get_comments = Comment.get_blog_comments(id)
 
-    return render_template('blog.html', get_blog=get_blog,get_comments=get_comments, comments_count = len(get_blog_comments),comment_form=comment_form)
+    return render_template('blog.html', get_blog=get_blog,get_comments=get_comments,comment_form=comment_form)
 
 @main.route('/index/<int:id>/delete_blog')
 @login_required
